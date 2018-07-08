@@ -1,3 +1,7 @@
+/*
+Autor: Clesio Maxuel
+*/
+
 #ifndef PILHA_H
 #define PILHA_H
 
