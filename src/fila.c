@@ -30,20 +30,24 @@ void filaInsert(fila f, tipoDadosFila data){
 	NoFila *p =(NoFila*) malloc(sizeof(NoFila));
 	p->data = data;
 	p->link = NULL;
-	if (filaEmpty(f)) f->start = p;
-	else f->end->link = p;
+	if (filaEmpty(f)){
+		f->start = p;
+		f->end = p;
+	} else {
+		f->end->link = p;
+		f->end = p;
+	}
 }
 
-tipoDadosFila filaRemove(fila f){
+tipoDadosFila* filaRemove(fila f){
 	NoFila *p;
-	if(filaEmpty(f)){
-		p->data = (tipoDadosFila) 0;
-			return p->data;
-	} else{
-		p = f->start;
-		tipoDadosFila data = p->data;
+	tipoDadosFila* data;
+	if(filaEmpty(f)) return NULL;
+	else{
+		data = &f->start->data;
+		p = f->start->link;
+		f->start = p;
 		if (f->start == NULL) f->end == NULL;
-		free(p);
 		return data;
 	}
 }
@@ -58,4 +62,5 @@ int filaSize(fila f){
 		count++;
 		p = p->link;
 	}
+	return count;
 }

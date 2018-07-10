@@ -14,8 +14,8 @@ typedef struct noFila{
 } NoFila;
 
 typedef struct {
-	NoFila *start;
-	NoFila *end;	
+	struct noFila *start;
+	struct noFila *end;	
 } Fila;
 
 typedef Fila *fila;
@@ -23,7 +23,7 @@ typedef Fila *fila;
 void filaInit(fila f);
 void filaInsert(fila f, tipoDadosFila data);
 void filaShow(fila f);
-tipoDadosFila filaRemove(fila f);
+tipoDadosFila* filaRemove(fila f);
 int filaSize(fila f);
 int filaEmpty(fila f);
 
