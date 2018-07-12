@@ -4,6 +4,7 @@
 #include <time.h>
 #include "fila.h"
 #include "pilha.h"
+#include "grafo.h"
 
 Stack p;
 Fila f;
@@ -12,7 +13,7 @@ int main(int argc, char const *argv[]){
 	srand((unsigned)time(NULL));
 	setlocale(LC_ALL, "");
 
-	stackInit(&p);
+	/*stackInit(&p);
 	filaInit(&f);
 	filaRemove(&f);
 	filaInsert(&f, 7);
@@ -37,6 +38,6 @@ int main(int argc, char const *argv[]){
 	for (i = 0; i < 99; ++i){
 		stackPush(&p, rand() %99);	
 	}
-	stackShow(&p);
+	stackShow(&p);*/
 	return 0;
 }
