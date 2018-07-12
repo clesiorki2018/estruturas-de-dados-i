@@ -13,6 +13,18 @@ int main(int argc, char const *argv[]){
 	srand((unsigned)time(NULL));
 	setlocale(LC_ALL, "");
 
+	Grafo *g = grafoNew();
+	grafoPutVertex(g, 6);
+	grafoPutVertex(g, 9);
+	grafoPutVertex(g, 346);
+	grafoPutVertex(g, 125);
+	grafoPutVertex(g, 88);
+	grafoPutVertex(g, 655);
+	grafoPutArresta(g, 6, 9, 1, 1);
+	grafoPutArresta(g, 9, 346, 0, 0);
+	grafoShowVertex(g);
+	grafoShowArrestas(g);
+
 	/*stackInit(&p);
 	filaInit(&f);
 	filaRemove(&f);

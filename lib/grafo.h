@@ -11,49 +11,27 @@ typedef struct tipoVertice{
 	struct tipoVertice *ref;
 } Vertice;
 
-typedef struct tipoListVertice{
-	Vertice *start;
-	Vertice *next;	
-} ListVertice;
-
 typedef struct tipoArresta{
-	unsigned int id;
-	unsigned int ori;
+	unsigned int orientacao;
 	Vertice *v1;
 	Vertice *v2;
 	int custo;
 	struct tipoArresta *ref;
 } Arresta;
 
-typedef struct tipoListArresta{
-	Arresta *start;
-	Arresta *next;
-} ListArresta;
-
 typedef struct tipoGrafo{
-	ListVertice *v;
-	ListArresta *a;
+	Vertice *v;
+	Arresta *a;
 } Grafo;
 
-
-void listPutVertex(ListVertice *lV, Vertice v);
-void listPutArresta(ListArresta *lA, Arresta a*);
-void listRemoveVertex(ListVertice lV, int idV);
-void listRemoveArresta(ListArresta lA, int idA);
-void listInitVertex(ListVertice *lV);
-void listInitVertex(ListArresta *lA);
-int listCheckEmptyVertex(ListVertice lV);
-int listCheckEmptyArresta(ListArresta lA);
-int listGetSizeVertex(ListVertice lV);
-int listGetSizeArresta(ListArresta lA);
-
-void grafoInit(Grafo *g);
+Grafo* grafoNew(void);
+Vertice* grafoGetVertexById(Grafo *g, int id);
 void grafoPutVertex(Grafo *g, int id);
-void grafoPutArresta(Grafo *g, int v1, int v2, int custo);
+void grafoPutArresta(Grafo *g, int v1, int v2, int custo, int orientacao);
 void grafoDelVertex(Grafo *g, int v);
 void grafoDelArresta(Grafo *g, int a);
-void grafoShowVertexList(Grafo *g);
-void grafoShowArrestasList(Grafo *g);
+void grafoShowVertex(Grafo *g);
+void grafoShowArrestas(Grafo *g);
 void grafoShowMatrix(Grafo *g);
 
 #endif
