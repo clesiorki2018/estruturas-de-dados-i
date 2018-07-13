@@ -2,14 +2,59 @@
 #include <stdlib.h>
 #include "grafo.h"
 
-Grafo* grafoNew(void){
+/*
+Falta desenvolver esta função
+*/
+void grafoShowMatrix(Grafo *g){
+	int* list = (int*) grafoGetListVertex(g);
+	int size = grafoGetSizeOfVertex(g);
+	int i,j;
+
+	printf("Matriz de Adjacencias\n");
+	printf("    ");
+	for(j = 0; j < size; j++) printf(" %d", list[j]);
+	printf("\n");
+	for(i = 0; i < size; i++){
+		printf("%d", list[i]);
+		for(j = 0; j < size; j++){
+			printf(" 0 ");
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+
+int grafoGetSizeOfVertex(Grafo *g){
+	unsigned int count = 0;
+	Vertice *v = g->v;
+	while (v != NULL){
+		v = v->ref;
+		count++;
+	}
+	return count;
+}
+
+int * grafoGetListVertex(Grafo *g){
+	unsigned int size = grafoGetSizeOfVertex(g);
+	int* list = (int*) malloc(sizeof(int)*size);
+	int i = 0;
+	Vertice *v = g->v;
+	while(v != NULL){
+		list[i] = v->id;
+		v = v->ref;
+		i++;
+	}
+	return list;
+}
+
+Grafo * grafoNew(void){
 	Grafo *g = (Grafo*) malloc(sizeof(Grafo));
 	g->v = NULL;
 	g->a = NULL;
 	return g;
 }
 
-Vertice* grafoGetVertexById(Grafo *g,int id){
+Vertice * grafoGetVertexById(Grafo *g,int id){
 	Vertice *tmp = g->v;
 	while(tmp->id != id) tmp = tmp->ref;
 	return tmp;
@@ -42,9 +87,6 @@ void grafoPutArresta(Grafo *g, int v1, int v2, int custo, int orientacao){
 	}
 }
 
-void grafoDelVertex(Grafo *g, int v);
-void grafoDelArresta(Grafo *g, int a);
-
 void grafoShowVertex(Grafo *g){
 	Vertice *tmp = g->v;
 	printf("Vertices: [");
@@ -70,4 +112,25 @@ void grafoShowArrestas(Grafo *g){
 	printf("\n");
 }
 
-void grafoShowMatrix(Grafo *g);
+void grafoDelVertex(Grafo *g, int v){
+	Vertice *anterior = g->v;
+	Vertice *atual = anterior;
+	while(atual->id != v){
+		anterior = atual;
+		atual = atual->ref;
+	}
+	printf("Removido %d\n", atual->id);
+	anterior->ref = atual->ref;
+	free(atual);
+}
+
+void grafoDelArresta(Grafo *g, int v1, int v2){
+	Arresta *anterior = g->a;
+	Arresta *atual = anterior;
+	while(atual->v1->id != v2 && atual->v2->id != v2){
+		anterior = atual;
+		atual = atual->ref;
+	}
+	anterior->ref = atual->ref;
+	free(atual);
+}

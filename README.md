@@ -1,4 +1,5 @@
 # estruturas-de-dados-i
-# Autor Clesio Maxuel
+# estruturas-de-dados-i
+# Acadêmico Clesio Maxuel
 # implementação de estrutura pilha dinâmica
-# 
+# Grafos e Arvores;

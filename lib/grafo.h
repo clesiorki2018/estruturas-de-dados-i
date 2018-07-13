@@ -1,5 +1,6 @@
 /*
 Programador: Clesio Maxuel
+email clesiorki2014@gmail.com
 */
 
 #ifndef GRAFO_H
@@ -24,14 +25,15 @@ typedef struct tipoGrafo{
 	Arresta *a;
 } Grafo;
 
-Grafo* grafoNew(void);
-Vertice* grafoGetVertexById(Grafo *g, int id);
+Grafo * grafoNew(void);
+Vertice * grafoGetVertexById(Grafo *g, int id);
 void grafoPutVertex(Grafo *g, int id);
 void grafoPutArresta(Grafo *g, int v1, int v2, int custo, int orientacao);
 void grafoDelVertex(Grafo *g, int v);
-void grafoDelArresta(Grafo *g, int a);
+void grafoDelArresta(Grafo *g, int v1, int v2);
 void grafoShowVertex(Grafo *g);
 void grafoShowArrestas(Grafo *g);
 void grafoShowMatrix(Grafo *g);
-
+int * grafoGetListVertex(Grafo *g);
+int grafoGetSizeOfVertex(Grafo *g);
 #endif

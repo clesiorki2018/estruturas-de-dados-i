@@ -8,6 +8,7 @@
 
 Stack p;
 Fila f;
+int size;
 
 int main(int argc, char const *argv[]){
 	srand((unsigned)time(NULL));
@@ -20,10 +21,22 @@ int main(int argc, char const *argv[]){
 	grafoPutVertex(g, 125);
 	grafoPutVertex(g, 88);
 	grafoPutVertex(g, 655);
-	grafoPutArresta(g, 6, 9, 1, 1);
+	grafoPutArresta(g, 6, 9, 0, 1);
+	grafoPutArresta(g, 88, 6, 0, 0);
 	grafoPutArresta(g, 9, 346, 0, 0);
+	size = grafoGetSizeOfVertex(g);
+	printf("Size %d\n", size);
 	grafoShowVertex(g);
 	grafoShowArrestas(g);
+	grafoDelVertex(g , 125);
+	grafoDelArresta(g, 9, 346);
+	grafoShowVertex(g);
+	grafoDelVertex(g , 655);
+	grafoShowVertex(g);
+	grafoShowArrestas(g);
+	size = grafoGetSizeOfVertex(g);
+	printf("Size %d\n", size);
+	grafoShowMatrix(g);
 
 	/*stackInit(&p);
 	filaInit(&f);
