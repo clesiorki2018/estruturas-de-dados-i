@@ -8,7 +8,7 @@ Falta desenvolver esta função
 void grafoShowMatrix(Grafo *g){
 	int* list = (int*) grafoGetListVertex(g);
 	int size = grafoGetSizeOfVertex(g);
-	int i,j;
+	int i,j,custo;
 
 	printf("Matriz de Adjacencias\n");
 	printf("    ");
@@ -17,13 +17,23 @@ void grafoShowMatrix(Grafo *g){
 	for(i = 0; i < size; i++){
 		printf("%d", list[i]);
 		for(j = 0; j < size; j++){
-			int custo = g->a[j]->custo;
-			if(custo != 0)printf("%d\n", custo);
+			custo = grafoGetCustoOfArresta(g, list[i], list[j]);
+			if(custo != 0) printf(" %d ", custo);
 			else printf(" 0 ");
 		}
 		printf("\n");
 	}
 	printf("\n");
+}
+
+int grafoGetCustoOfArresta(Grafo *g, int v1, int v2){
+	int custo = 0;
+	Arresta *a = g->a;
+	while(a != NULL){
+		if(a->v1->id == v1 && a->v2->id == v2) custo = a->custo;
+		a = a->ref;
+	}
+	return custo;
 }
 
 int grafoGetSizeOfVertex(Grafo *g){

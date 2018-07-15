@@ -36,6 +36,8 @@ int main(int argc, char const *argv[]){
 	grafoShowArrestas(g);
 	size = grafoGetSizeOfVertex(g);
 	printf("Size %d\n", size);
+	grafoPutArresta(g, 9, 88, 5, 1);
+	grafoPutArresta(g, 9, 346, 55, 0);
 	grafoShowMatrix(g);
 
 	/*stackInit(&p);

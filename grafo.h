@@ -36,4 +36,5 @@ void grafoShowArrestas(Grafo *g);
 void grafoShowMatrix(Grafo *g);
 int * grafoGetListVertex(Grafo *g);
 int grafoGetSizeOfVertex(Grafo *g);
+int grafoGetCustoOfArresta(Grafo *g, int v1, int v2);
 #endif
